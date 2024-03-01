@@ -15,9 +15,13 @@ public DateTask(int m, int d, int y) {
     setDate(m, d, y);
 }
 // Methods
+
+//toString method to display "12/12/2012" format
 public String toString() {
-    return month + "-" + day + "-" + year;
+    return String.format("%02d/%02d/%04d", month, day, year);
 }
+
+// Set the date
 public void setDate(int m, int d, int y) {
     if (valid(d, m, y)) {
         day = (byte) d;
@@ -30,21 +34,27 @@ public void setDate(int m, int d, int y) {
         month = (byte) 0;
     }
 }
+
+// Static method to print leap years
 public static void leapYears() {
     for (int i = 1980; i <= 2023; i = i + 4) {
         if (((i % 4 == 0) && (i % 100 != 0)) || (i % 400 == 0))
             System.out.println("The year " + i + " is a leap year");
     }
 }
+
+// Getters and setters for day, month, and year
+
 public int getDay() {
     return day;
 }
 public void setDay(int day) {
     if (valid(day, month, year)) {
         this.day = (byte) day;
-        
     }
-    
+    else{
+        this.day = 0;
+    }
 }
 public int getMonth() {
     return month;
@@ -72,6 +82,8 @@ public void setYear(int year) {
     }
     
 }
+
+// Check if the date is valid
 private boolean valid(int day, int month, int year) {
     if (day > 31 || day < 1 || month > 12 || month < 1 || year < 1)  {
         System.out.println("Attempting to create a non-valid date " +month + "/" + day + "/" + year);

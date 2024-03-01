@@ -6,6 +6,8 @@ public class MyDate {
         DateTask date2 = new DateTask(9,21,1984);
         System.out.println(date1.toString());
         System.out.println(date2.toString());
-       // display leapyears
+       
+        // Print leap years
+        DateTask.leapYears();
     }
 }
